@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Local/standalone setup. On Kaggle use notebooks/kaggle_prepare_data.ipynb instead.
+# Local/standalone setup. On Kaggle use notebooks/prepare_data.ipynb instead.
 #   bash setup.sh [WORKDIR]
 set -euo pipefail
 
@@ -9,12 +9,18 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mkdir -p "$WORK/ckpt" "$WORK/results"
 
 echo "== deps"
-pip install -q -r "$HERE/requirements-kaggle.txt"
+if command -v uv >/dev/null 2>&1; then
+  uv pip install --python "$(command -v python)" -r "$HERE/requirements-kaggle.txt"
+else
+  python -m pip install -r "$HERE/requirements-kaggle.txt"
+fi
 python -c "import torch; print('   torch', torch.__version__, 'cuda', torch.cuda.is_available())"
 
 echo "== upstream Whisfusion"
-[ -d "$WORK/Whisfusion" ] || git clone --depth 1 \
-  https://github.com/taeyoun811/Whisfusion.git "$WORK/Whisfusion"
+if [ ! -d "$WORK/Whisfusion" ]; then
+  git clone https://github.com/taeyoun811/Whisfusion.git "$WORK/Whisfusion"
+  git -C "$WORK/Whisfusion" checkout aa9afe3688ccd15ebf096ec9845d67925d1a3aea
+fi
 
 echo "== checkpoints (~1.9 GB)"
 python - "$WORK" <<'PY'

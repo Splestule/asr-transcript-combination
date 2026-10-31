@@ -1,0 +1,124 @@
+test: 2143 utterances (shard s02) on 11 sets, present in every arm; train: K=4 flat 2536, K=4 tree-early 2535, K=8 flat 2535, K=8 tree-early 2536, K=15 flat 2537, K=15 tree-early 2536
+seed 0 primary: done
+seed 0 in-domain: done
+seed 1 primary: done
+seed 1 in-domain: done
+seed 2 primary: done
+seed 2 in-domain: done
+
+== WER on s02, primary protocol (set-level CV); mean over seeds 0,1,2, Whisper norm for seed 0; s/utt = encoder + decoding on the run's GPU
+
+  K decode     method                  WER    sd  WER wn  s/utt  cost
+  4 flat       upstream conf         30.52  0.00   31.10  0.291  0.29
+  4 flat       MBR                   30.05  0.00   30.72  0.291  0.29
+  4 flat       ROVER tuned           25.07  0.00   25.94  0.291  0.29
+  4 flat       iROVER-style          24.96  0.04   25.82  0.291  0.29
+  4 flat       final                 24.50  0.00   25.34  0.291  0.29
+  4 flat       candidate oracle      27.40  0.00   28.33  0.291  0.29
+  4 tree-early upstream conf         31.01  0.00   31.59  0.227  0.23
+  4 tree-early MBR                   30.41  0.00   31.10  0.227  0.23
+  4 tree-early ROVER tuned           25.59  0.04   26.44  0.227  0.23
+  4 tree-early iROVER-style          25.34  0.03   26.09  0.227  0.23
+  4 tree-early final                 25.00  0.04   25.76  0.227  0.23
+  4 tree-early candidate oracle      27.85  0.00   28.83  0.227  0.23
+  8 flat       upstream conf         29.17  0.00   29.76  0.558  0.56
+  8 flat       MBR                   28.11  0.00   28.78  0.558  0.56
+  8 flat       ROVER tuned           23.72  0.03   24.56  0.558  0.56
+  8 flat       iROVER-style          23.74  0.05   24.48  0.558  0.56
+  8 flat       final                 23.16  0.03   23.95  0.558  0.56
+  8 flat       candidate oracle      25.03  0.00   26.20  0.558  0.56
+  8 tree-early upstream conf         29.49  0.00   30.21  0.370  0.37
+  8 tree-early MBR                   28.50  0.00   29.16  0.370  0.37
+  8 tree-early ROVER tuned           23.86  0.01   24.64  0.370  0.37
+  8 tree-early iROVER-style          23.82  0.07   24.52  0.370  0.37
+  8 tree-early final                 23.33  0.00   24.12  0.370  0.37
+  8 tree-early candidate oracle      25.35  0.00   26.51  0.370  0.37
+ 15 flat       upstream conf         28.46  0.00   29.12  0.996  1.00
+ 15 flat       MBR                   26.87  0.00   27.61  0.996  1.00
+ 15 flat       ROVER tuned           23.39  0.02   24.26  0.996  1.00
+ 15 flat       iROVER-style          23.02  0.02   23.85  0.996  1.00
+ 15 flat       final                 22.64  0.05   23.49  0.996  1.00
+ 15 flat       candidate oracle      23.43  0.00   24.70  0.996  1.00
+ 15 tree-early upstream conf         28.78  0.00   29.45  0.608  0.61
+ 15 tree-early MBR                   27.19  0.00   27.85  0.608  0.61
+ 15 tree-early ROVER tuned           23.40  0.01   24.17  0.608  0.61
+ 15 tree-early iROVER-style          23.05  0.06   23.82  0.608  0.61
+ 15 tree-early final                 22.70  0.03   23.46  0.608  0.61
+ 15 tree-early candidate oracle      23.72  0.00   24.90  0.608  0.61
+    AR         whisper-small (AR, beams 1)  14.46  0.00   12.65  0.324  0.33
+
+== in-domain protocol (train on s00 of all sets), WER mean over seeds
+K=4  flat       upstream conf 30.52  MBR 30.05  ROVER tuned 25.07  iROVER-style 24.80  final 24.43  candidate oracle 27.40
+K=4  tree-early upstream conf 31.01  MBR 30.41  ROVER tuned 25.56  iROVER-style 25.10  final 24.86  candidate oracle 27.85
+K=8  flat       upstream conf 29.17  MBR 28.11  ROVER tuned 23.68  iROVER-style 23.41  final 23.10  candidate oracle 25.03
+K=8  tree-early upstream conf 29.49  MBR 28.50  ROVER tuned 23.88  iROVER-style 23.60  final 23.29  candidate oracle 25.35
+K=15 flat       upstream conf 28.46  MBR 26.87  ROVER tuned 23.35  iROVER-style 22.82  final 22.54  candidate oracle 23.43
+K=15 tree-early upstream conf 28.78  MBR 27.19  ROVER tuned 23.40  iROVER-style 22.85  final 22.66  candidate oracle 23.72
+
+== pre-registered hypotheses (docs/confirm_prereg.md); positive = second better
+
+H1 final tree-early K=8 beats upstream flat K=15 (CI > 0): PASS
+    upstream flat15 -> final tree8                 seed 0: +5.13 [+4.71, +5.56] ok
+    upstream flat15 -> final tree8                 seed 1: +5.14 [+4.71, +5.55] ok
+    upstream flat15 -> final tree8                 seed 2: +5.13 [+4.73, +5.57] ok
+
+H2 tree-early non-inferior to flat for final (tree - flat upper CI < 0.5): FAIL
+    K=4 flat -> tree-early                         seed 0: +0.46 [+0.16, +0.76] FAIL
+    K=4 flat -> tree-early                         seed 1: +0.48 [+0.18, +0.76] FAIL
+    K=4 flat -> tree-early                         seed 2: +0.55 [+0.27, +0.84] FAIL
+    K=8 flat -> tree-early                         seed 0: +0.18 [-0.06, +0.41] ok
+    K=8 flat -> tree-early                         seed 1: +0.20 [-0.04, +0.44] ok
+    K=8 flat -> tree-early                         seed 2: +0.14 [-0.10, +0.37] ok
+    K=15 flat -> tree-early                        seed 0: +0.04 [-0.18, +0.27] ok
+    K=15 flat -> tree-early                        seed 1: +0.06 [-0.17, +0.27] ok
+    K=15 flat -> tree-early                        seed 2: +0.09 [-0.14, +0.30] ok
+
+H3 final beats iROVER-style at K=4 and 8, same decode (CI > 0): PASS
+    K=4 flat iROVER -> final                       seed 0: +0.51 [+0.34, +0.69] ok
+    K=4 flat iROVER -> final                       seed 1: +0.44 [+0.27, +0.61] ok
+    K=4 flat iROVER -> final                       seed 2: +0.41 [+0.25, +0.59] ok
+    K=4 tree-early iROVER -> final                 seed 0: +0.38 [+0.21, +0.54] ok
+    K=4 tree-early iROVER -> final                 seed 1: +0.33 [+0.16, +0.49] ok
+    K=4 tree-early iROVER -> final                 seed 2: +0.31 [+0.14, +0.48] ok
+    K=8 flat iROVER -> final                       seed 0: +0.57 [+0.41, +0.73] ok
+    K=8 flat iROVER -> final                       seed 1: +0.68 [+0.52, +0.86] ok
+    K=8 flat iROVER -> final                       seed 2: +0.50 [+0.35, +0.66] ok
+    K=8 tree-early iROVER -> final                 seed 0: +0.41 [+0.27, +0.55] ok
+    K=8 tree-early iROVER -> final                 seed 1: +0.48 [+0.33, +0.64] ok
+    K=8 tree-early iROVER -> final                 seed 2: +0.58 [+0.43, +0.74] ok
+
+H4 final beats ROVER tuned everywhere (CI > 0): PASS
+    K=4 flat ROVER -> final                        seed 0: +0.56 [+0.41, +0.72] ok
+    K=4 flat ROVER -> final                        seed 1: +0.57 [+0.43, +0.72] ok
+    K=4 flat ROVER -> final                        seed 2: +0.57 [+0.43, +0.72] ok
+    K=4 tree-early ROVER -> final                  seed 0: +0.67 [+0.53, +0.82] ok
+    K=4 tree-early ROVER -> final                  seed 1: +0.56 [+0.42, +0.71] ok
+    K=4 tree-early ROVER -> final                  seed 2: +0.55 [+0.40, +0.69] ok
+    K=8 flat ROVER -> final                        seed 0: +0.59 [+0.46, +0.73] ok
+    K=8 flat ROVER -> final                        seed 1: +0.55 [+0.41, +0.69] ok
+    K=8 flat ROVER -> final                        seed 2: +0.56 [+0.41, +0.70] ok
+    K=8 tree-early ROVER -> final                  seed 0: +0.52 [+0.39, +0.65] ok
+    K=8 tree-early ROVER -> final                  seed 1: +0.53 [+0.38, +0.67] ok
+    K=8 tree-early ROVER -> final                  seed 2: +0.55 [+0.41, +0.69] ok
+    K=15 flat ROVER -> final                       seed 0: +0.69 [+0.53, +0.85] ok
+    K=15 flat ROVER -> final                       seed 1: +0.74 [+0.59, +0.89] ok
+    K=15 flat ROVER -> final                       seed 2: +0.80 [+0.64, +0.96] ok
+    K=15 tree-early ROVER -> final                 seed 0: +0.66 [+0.50, +0.82] ok
+    K=15 tree-early ROVER -> final                 seed 1: +0.71 [+0.56, +0.86] ok
+    K=15 tree-early ROVER -> final                 seed 2: +0.72 [+0.55, +0.88] ok
+
+summary: H1 PASS, H2 FAIL, H3 PASS, H4 PASS
+
+== per set, primary protocol, seed 0
+set              upstream con 15f           MBR 15f   iROVER-style 8t          final 8t  whisper-small (A
+ls-test-clean                7.49              6.92              5.79              5.63              4.05
+ami                         36.34             36.58             34.41             34.65             21.68
+earnings22                  36.36             33.92             32.29             31.26             15.22
+ls-tc-babble0               66.24             63.60             54.51             52.62             45.41
+ls-test-other               15.96             14.81             13.44             13.18              8.64
+common_voice                36.70             33.73             30.98             30.49             18.70
+spgispeech                  21.32             19.50             16.23             16.04              3.55
+ls-tc-white5                23.35             21.77             19.68             19.37             10.72
+gigaspeech                  26.03             24.79             22.21             22.21             13.93
+voxpopuli                   23.61             22.59             20.50             20.10             11.66
+ls-tc-babble5               30.06             27.97             22.93             23.11             13.79

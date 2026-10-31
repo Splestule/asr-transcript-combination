@@ -1,27 +1,23 @@
 [project]
-name = "candidate-reranker"
+name = "asr-transcript-combination"
 version = "0.1.0"
-description = "Add your description here"
+description = "Word-level combination of alternative speech-recognition transcripts"
 readme = "README.md"
-authors = [
-    { name = "Eduard Šimon", email = "eda.simon14@gmail.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
-    "kaggle==2.2.4",
-    "matplotlib>=3.11.2",
     "numpy>=2.5.3",
-    "pandas>=3.0.6",
-    "pyarrow>=25.0.1",
     "rapidfuzz>=3.14.6",
     "scipy>=1.18.1",
-    "torch>=2.14.0",
+    "scikit-learn>=1.9.1",
     "whisper-normalizer>=0.1.15",
 ]
 
-[project.scripts]
-candidate-reranker = "candidate_reranker:main"
+[dependency-groups]
+campaign = [
+    "matplotlib>=3.11.2",
+    "pandas>=3.0.6",
+    "pyarrow>=25.0.1",
+]
 
-[build-system]
-requires = ["uv_build>=0.12.1,<0.13.0"]
-build-backend = "uv_build"
+[tool.uv]
+package = false

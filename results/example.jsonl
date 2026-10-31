@@ -1,0 +1,3 @@
+{"id": "synthetic-1", "reference": "the cat sat on the mat", "candidates": [{"text": "the cap sat on the mat", "avg_conf": 0.9}, {"text": "the cat sat on a mat", "avg_conf": 0.85}, {"text": "the cat sit on the mat", "avg_conf": 0.8}]}
+{"id": "synthetic-2", "reference": "please close the blue door", "candidates": [{"text": "please close a blue door", "avg_conf": 0.9}, {"text": "please close the blue doors", "avg_conf": 0.85}, {"text": "please close the new door", "avg_conf": 0.8}]}
+{"id": "synthetic-3", "reference": "we meet at nine tomorrow", "candidates": [{"text": "we meet at five tomorrow", "avg_conf": 0.9}, {"text": "we meet at nine today", "avg_conf": 0.85}, {"text": "we meet by nine tomorrow", "avg_conf": 0.8}]}

@@ -1,0 +1,6 @@
+# CPU transcript analysis, learned word scoring and bootstrap comparisons.
+numpy
+scipy
+rapidfuzz
+scikit-learn
+whisper-normalizer
