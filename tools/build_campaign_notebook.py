@@ -5,7 +5,7 @@ Every source file the campaign needs is embedded as a %%writefile cell, so a not
 a complete, pinned record of the code that produced its results: no git clone of this repo, no
 dataset of code to keep in sync.
 
-    python tools/build_campaign_notebook.py                         # notebooks/kaggle_campaign.ipynb
+    python tools/build_campaign_notebook.py                         # notebooks/campaign.ipynb
     python tools/build_campaign_notebook.py --variant smoke --user me --kernel_dir out/smoke
 
 --kernel_dir also writes a kernel-metadata.json next to a copy of the notebook, ready for
@@ -266,7 +266,7 @@ def main() -> int:
     args = ap.parse_args()
 
     nb = build(args.variant)
-    name = "kaggle_campaign.ipynb" if args.variant == "full" else f"kaggle_campaign_{args.variant}.ipynb"
+    name = "campaign.ipynb" if args.variant == "full" else f"campaign_{args.variant}.ipynb"
     out = Path(args.out) if args.out else ROOT / "notebooks" / name
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding="utf-8")

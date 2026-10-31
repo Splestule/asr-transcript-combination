@@ -1,0 +1,159 @@
+
+== Drax K=4, English, set-level CV, test s01+s02: 4400 utterances, 77301 words, 11 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           16.67  0.00              0.0%
+  MBR                     15.70  0.00              5.8%
+  ROVER tuned             14.30  0.00             14.2%
+  iROVER-style            14.29  0.02             14.3%
+  slot model              14.23  0.01             14.6%
+  final (no acoustic)     14.31  0.01             14.1%
+  candidate oracle        13.83  0.00             17.0%
+  slot oracle             10.30  0.00             38.2%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.36 [+2.11,+2.62]*  +2.34 [+2.11,+2.61]*  +2.37 [+2.13,+2.63]*
+    vs MBR               +1.39 [+1.24,+1.53]*  +1.38 [+1.23,+1.52]*  +1.40 [+1.27,+1.55]*
+    vs ROVER tuned       -0.02 [-0.09,+0.06]   -0.03 [-0.10,+0.05]   -0.01 [-0.08,+0.07]
+    vs iROVER-style      -0.03 [-0.10,+0.04]   -0.01 [-0.07,+0.06]   -0.03 [-0.10,+0.03]
+    vs slot model        -0.09 [-0.15,-0.02]-  -0.10 [-0.16,-0.04]-  -0.06 [-0.12,-0.00]-
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  ami              400         13.67         12.98         12.14         12.17         11.70          7.45     +0.44 [+0.13,+0.76]
+  common_voice     400         38.66         37.94         36.96         36.82         36.93         33.93     +0.03 [-0.28,+0.34]
+  earnings22       400         28.36         25.02         23.46         23.29         23.32         14.40     +0.13 [-0.22,+0.48]
+  gigaspeech       400         17.04         16.60         15.16         15.12         15.29         10.52     -0.13 [-0.41,+0.17]
+  ls-tc-babble0    400         44.98         43.59         38.32         38.26         38.34         31.89     -0.01 [-0.38,+0.35]
+  ls-tc-babble5    400         12.31         11.39          9.93          9.93         10.17          6.78     -0.25 [-0.48,-0.02]
+  ls-tc-white5     400          9.39          8.45          7.37          7.39          7.44          4.99     -0.07 [-0.28,+0.14]
+  ls-test-clean    400          3.33          2.91          2.76          2.72          2.71          1.63     +0.05 [-0.07,+0.17]
+  ls-test-other    400          7.97          7.64          6.86          7.09          7.13          4.29     -0.27 [-0.48,-0.07]
+  spgispeech       400          9.86          8.75          8.20          8.21          8.05          3.86     +0.15 [-0.04,+0.34]
+  voxpopuli        400          9.17          8.96          8.17          8.13          8.17          5.22     +0.00 [-0.19,+0.20]
+
+== Drax K=8, English, set-level CV, test s01+s02: 4400 utterances, 77301 words, 11 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           15.84  0.00              0.0%
+  MBR                     14.48  0.00              8.6%
+  ROVER tuned             13.44  0.00             15.1%
+  iROVER-style            13.42  0.01             15.3%
+  slot model              13.45  0.02             15.1%
+  final (no acoustic)     13.50  0.02             14.8%
+  candidate oracle        12.26  0.00             22.6%
+  slot oracle              9.12  0.00             42.4%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.36 [+2.10,+2.61]*  +2.35 [+2.10,+2.61]*  +2.31 [+2.06,+2.59]*
+    vs MBR               +1.00 [+0.88,+1.12]*  +0.99 [+0.87,+1.12]*  +0.96 [+0.84,+1.09]*
+    vs ROVER tuned       -0.04 [-0.11,+0.03]   -0.05 [-0.11,+0.02]   -0.08 [-0.15,-0.01]-
+    vs iROVER-style      -0.06 [-0.12,-0.00]-  -0.08 [-0.13,-0.02]-  -0.11 [-0.17,-0.05]-
+    vs slot model        -0.06 [-0.11,-0.01]-  -0.03 [-0.08,+0.01]   -0.05 [-0.10,+0.01]
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  ami              400         14.14         11.31         10.81         10.64         11.00          5.89     -0.19 [-0.54,+0.16]
+  common_voice     400         37.56         36.60         36.06         36.19         36.11         32.86     -0.05 [-0.30,+0.19]
+  earnings22       400         26.00         23.31         22.16         21.96         22.07         13.06     +0.09 [-0.18,+0.38]
+  gigaspeech       400         16.60         15.38         14.51         14.65         14.63          9.37     -0.12 [-0.37,+0.13]
+  ls-tc-babble0    400         42.96         40.98         35.91         35.75         35.99         28.83     -0.07 [-0.42,+0.28]
+  ls-tc-babble5    400         11.88         10.09          9.18          9.13          9.12          5.40     +0.06 [-0.14,+0.26]
+  ls-tc-white5     400          8.57          7.45          6.63          6.67          6.82          3.99     -0.19 [-0.37,-0.01]
+  ls-test-clean    400          2.92          2.37          2.36          2.40          2.42          1.22     -0.06 [-0.19,+0.08]
+  ls-test-other    400          7.63          6.76          6.39          6.45          6.46          3.53     -0.07 [-0.22,+0.08]
+  spgispeech       400          8.94          8.05          7.75          7.77          7.74          3.09     +0.01 [-0.13,+0.15]
+  voxpopuli        400          8.91          8.13          7.83          7.76          7.76          4.70     +0.07 [-0.07,+0.22]
+
+== Drax K=16, English, set-level CV, test s01+s02: 4400 utterances, 77301 words, 11 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           15.08  0.00              0.0%
+  MBR                     13.85  0.00              8.1%
+  ROVER tuned             12.92  0.00             14.4%
+  iROVER-style            12.90  0.00             14.4%
+  slot model              12.95  0.01             14.2%
+  final (no acoustic)     12.97  0.02             14.0%
+  candidate oracle        11.13  0.00             26.2%
+  slot oracle              8.04  0.00             46.7%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.10 [+1.90,+2.32]*  +2.14 [+1.92,+2.37]*  +2.10 [+1.90,+2.33]*
+    vs MBR               +0.87 [+0.75,+1.00]*  +0.91 [+0.79,+1.03]*  +0.87 [+0.75,+0.99]*
+    vs ROVER tuned       -0.06 [-0.13,+0.01]   -0.02 [-0.09,+0.04]   -0.06 [-0.14,+0.01]
+    vs iROVER-style      -0.07 [-0.13,-0.01]-  -0.03 [-0.09,+0.03]   -0.08 [-0.15,-0.02]-
+    vs slot model        -0.02 [-0.08,+0.04]   -0.01 [-0.06,+0.05]   -0.04 [-0.10,+0.02]
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  ami              400         13.39         10.59         10.25         10.25         10.42          4.42     -0.17 [-0.56,+0.23]
+  common_voice     400         37.15         35.98         35.54         35.70         35.84         32.04     -0.30 [-0.61,-0.03]
+  earnings22       400         23.40         22.07         21.20         21.03         21.36         11.51     -0.16 [-0.45,+0.15]
+  gigaspeech       400         16.03         14.95         14.35         14.40         14.54          8.34     -0.19 [-0.38,+0.01]
+  ls-tc-babble0    400         40.67         38.92         33.74         33.69         33.90         25.84     -0.16 [-0.49,+0.17]
+  ls-tc-babble5    400         11.43          9.73          8.73          8.75          8.61          4.40     +0.12 [-0.10,+0.37]
+  ls-tc-white5     400          8.34          7.03          6.36          6.40          6.37          3.01     -0.01 [-0.17,+0.14]
+  ls-test-clean    400          2.75          2.32          2.22          2.25          2.22          0.97     +0.00 [-0.15,+0.15]
+  ls-test-other    400          7.47          6.22          6.18          6.25          6.29          2.71     -0.11 [-0.32,+0.09]
+  spgispeech       400          8.44          7.64          7.41          7.42          7.48          2.54     -0.07 [-0.23,+0.09]
+  voxpopuli        400          8.73          7.96          7.83          7.64          7.66          4.09     +0.17 [+0.01,+0.33]
+
+== Drax K=4, FLEURS 6 languages, leave one language out, test s01+s02: 1614 utterances, 37337 words, 6 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           11.58  0.00              0.0%
+  MBR                     11.03  0.00              4.7%
+  ROVER tuned              9.72  0.00             16.1%
+  iROVER-style             9.33  0.00             19.4%
+  slot model               9.71  0.00             16.2%
+  final (no acoustic)      9.46  0.00             18.3%
+  candidate oracle         9.53  0.00             17.7%
+  slot oracle              6.40  0.00             44.7%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.12 [+1.90,+2.34]*
+    vs MBR               +1.57 [+1.39,+1.76]*
+    vs ROVER tuned       +0.26 [+0.16,+0.35]*
+    vs iROVER-style      -0.13 [-0.22,-0.05]-
+    vs slot model        +0.25 [+0.17,+0.33]*
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  fleurs-de        346         10.58         10.13          8.78          8.49          8.50          6.18     +0.28 [+0.07,+0.49]
+  fleurs-en        400         12.01         11.42         10.31          9.99         10.05          6.54     +0.26 [+0.06,+0.46]
+  fleurs-es        200          7.71          7.06          6.52          6.25          6.46          4.24     +0.06 [-0.12,+0.23]
+  fleurs-fr        268         13.66         13.05         11.45         10.99         11.03          7.86     +0.42 [+0.19,+0.65]
+  fleurs-it        200          8.09          7.92          6.86          6.47          6.69          4.68     +0.17 [-0.06,+0.40]
+  fleurs-pt        200         17.19         16.37         14.01         13.34         13.71          8.53     +0.30 [-0.04,+0.66]
+
+== Drax K=8, FLEURS 6 languages, leave one language out, test s01+s02: 1614 utterances, 37337 words, 6 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           10.98  0.00              0.0%
+  MBR                      9.92  0.00              9.7%
+  ROVER tuned              9.04  0.00             17.7%
+  iROVER-style             8.65  0.00             21.2%
+  slot model               9.06  0.00             17.5%
+  final (no acoustic)      8.76  0.00             20.3%
+  candidate oracle         8.19  0.00             25.5%
+  slot oracle              5.35  0.00             51.3%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.23 [+1.99,+2.47]*
+    vs MBR               +1.17 [+1.01,+1.33]*
+    vs ROVER tuned       +0.28 [+0.19,+0.37]*
+    vs iROVER-style      -0.11 [-0.19,-0.03]-
+    vs slot model        +0.30 [+0.22,+0.38]*
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  fleurs-de        346          9.77          8.92          8.15          7.73          7.90          5.14     +0.25 [+0.07,+0.45]
+  fleurs-en        400         11.53         10.22          9.44          9.23          9.16          5.56     +0.28 [+0.07,+0.50]
+  fleurs-es        200          7.36          6.39          6.06          5.81          5.87          3.50     +0.19 [+0.02,+0.38]
+  fleurs-fr        268         12.81         12.03         10.88         10.22         10.60          6.47     +0.28 [+0.05,+0.51]
+  fleurs-it        200          7.54          7.17          6.60          6.43          6.34          3.96     +0.26 [+0.07,+0.46]
+  fleurs-pt        200         16.74         14.61         12.81         12.12         12.35          7.16     +0.45 [+0.17,+0.75]
+
+== Drax K=16, FLEURS 6 languages, leave one language out, test s01+s02: 1614 utterances, 37337 words, 6 sets
+  method                    WER    sd  rel. vs upstream
+  upstream conf           10.54  0.00              0.0%
+  MBR                      9.37  0.00             11.1%
+  ROVER tuned              8.79  0.00             16.6%
+  iROVER-style             8.33  0.00             21.0%
+  slot model               8.81  0.00             16.4%
+  final (no acoustic)      8.36  0.00             20.8%
+  candidate oracle         7.18  0.00             31.9%
+  slot oracle              4.62  0.00             56.2%
+  paired bootstrap, final minus baseline (positive = final better), per seed
+    vs upstream conf     +2.19 [+1.96,+2.43]*
+    vs MBR               +1.02 [+0.87,+1.18]*
+    vs ROVER tuned       +0.43 [+0.33,+0.55]*
+    vs iROVER-style      -0.03 [-0.12,+0.06]
+    vs slot model        +0.46 [+0.36,+0.55]*
+  per set (seed 0)      upstream con           MBR   ROVER tuned  iROVER-style  final (no ac   slot oracle          final vs ROVER
+  fleurs-de        346          9.51          8.35          8.00          7.58          7.36          4.37     +0.64 [+0.40,+0.89]
+  fleurs-en        400         11.10          9.86          9.27          8.91          9.02          4.85     +0.25 [+0.01,+0.50]
+  fleurs-es        200          7.04          6.02          5.95          5.47          5.58          3.12     +0.36 [+0.15,+0.58]
+  fleurs-fr        268         12.27         11.33         10.57          9.82          9.94          5.55     +0.63 [+0.36,+0.90]
+  fleurs-it        200          7.32          6.56          6.09          5.94          5.96          3.34     +0.13 [-0.08,+0.35]
+  fleurs-pt        200         15.79         13.79         12.46         11.84         11.88          6.19     +0.58 [+0.23,+0.94]
